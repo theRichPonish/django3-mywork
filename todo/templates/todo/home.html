@@ -1,0 +1,19 @@
+{% extends 'todo\base.html' %}
+{% block content %}
+<div class="container text-center">
+  {% if user.is_authenticated %}
+  <h1>My Work</h1>
+  <font size = 30><p>What are you doing here? You are recognised. This page is for first-comers only. Start doing your work.</p></font>
+<font size = 30><a href="{% url 'currenttodos' %}"><button type="button" name="button" class="btn btn-success" type="button" name="button">Currenttodos</button></a></font>
+</div>
+  {% else %}
+<div class = "container text-center">
+  <h1>My Work</h1>
+  <font size = 30><p>This web-app might look little but its great. You need to just tell it what you wanna do and it will do it*. It will lessen your work load. Just Signing Up is what you need.</p></font>
+<font size = 30><a href="{% url 'signupuser' %}"><button type="button" name="button" class="btn btn-success" type="button" name="button">Start</button></a></font>
+</div>
+<div align = 'right'
+  <small>*Not Actually</small>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'todo\base.html' %}
+{% block content %}
+<div class="container text-center">
+  <h1>Current</h1>
+</div>
+{% if todos %}
+  <div class="list-group">
+    {% for todo in todos %}
+    {% if todo.important %}
+    <div class="container text-center">
+    <a href="{% url 'viewtodo' todo.id %}" class="list-group-item list-group-item-action active" aria-current="true">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{ todo.title }}</h5>
+        <small>Created on {{ todo.created }} GMT</small>
+      </div>
+      {% if todo.memo %}
+      <p class="mb-1">{{ todo.memo|truncatechars:99 }}</p>
+      {% endif %}
+    </a>
+  </div>
+    {% else %}
+    <div class="container text-center">
+    <a href="{% url 'viewtodo' todo.id %}" class="list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{ todo.title }}</h5>
+        <small class="text-muted">Created on {{ todo.created }} GMT</small>
+      </div>
+      {% if todo.memo %}
+      <p class="mb-1">{{ todo.memo|truncatechars:99 }}</p>
+      {% endif %}
+    </a>
+  </div>
+    {% endif %}
+{% endfor %}
+{% else %}
+<div class = "container text-center">
+  <font size = 30><p>Looks like you don't have any work cause' you have completed all the work. If you have:</p></font>
+<font size = 30><a href="{% url 'createtodo' %}"><button type="button" name="button" class="btn btn-success" type="button" name="button">Create a todo now</button></a></font>
+</div>
+{% endif %}
+{% endblock %}

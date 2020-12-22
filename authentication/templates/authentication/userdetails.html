@@ -1,0 +1,24 @@
+{% extends 'todo\base.html' %}
+{% block content %}
+<div class="container text-center">
+<h1>User Details</h1>
+<table class="table">
+  <tr>
+    <th scope="col">Field</th>
+    <th scope="col">Value</th>
+  </tr>
+  <tr>
+    <td>Username:</td>
+    <td>{{ request.user }}</td>
+  </tr>
+  <tr>
+    <td>Email:</td>
+    <td>{{ request.user.email }}</td>
+  </tr>
+  <tr>
+    <td>Password:</td>
+    <td><a class="nav-link" href="{% url 'changepassword' %}">Change Password</a></td>
+  </tr>
+</table>
+</div>
+{% endblock %}

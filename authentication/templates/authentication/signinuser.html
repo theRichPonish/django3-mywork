@@ -1,0 +1,25 @@
+{% extends 'todo\base.html' %}
+{% block content %}
+<div class="container text-center">
+  <h1>Sign In</h1>
+</div>
+{% if user.is_authenticated %}
+<div class="container text-center">
+<font size = 30><p>What are you doing here? You are recognised. This page is for first-comers only. Start doing your work.</p></font>
+<font size = 30><a href="{% url 'currenttodos' %}"><button type="button" name="button" class="btn btn-success" type="button" name="button">Currenttodos</button></a></font>
+</div>
+{% else %}
+<div class="container text-center">
+{% if error %}
+<div class="alert alert-danger">
+  {{ error }}
+</div>
+{% endif %}
+<form method="post">
+{% csrf_token %}
+{{ form.as_p }}
+<button class="btn btn-primary" type="submit" name="sign_in">Sign In</button>
+</form>
+</div>
+{% endif %}
+{% endblock %}
