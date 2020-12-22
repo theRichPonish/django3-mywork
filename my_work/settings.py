@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '_nrx3v2ms9+*(d=67_=54fp0y$y%aq0hx*gm^7hyf6p839oy*h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mywork.pythonanywhere.com']
 
 
 
@@ -120,4 +120,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
 LOGIN_URL = '/authentication/signin/'
+try:
+    from .local_settings import *
+except ImportError:
+    print("Looks like no local file. You must be on production")
