@@ -8,6 +8,7 @@ urlpatterns = [
     path('authentication/', include('authentication.urls')),
     path('current/', todo_views.currenttodos, name = "currenttodos"),
     path('create/', todo_views.createtodo, name = "createtodo"),
+    path('credits/', todo_views.credits, name = "credits"),
     path('completed/', todo_views.completedtodos, name = "completedtodos"),
     path('todo/<int:todo_pk>/', todo_views.viewtodo, name = "viewtodo"),
     path('', todo_views.home, name = "home"),

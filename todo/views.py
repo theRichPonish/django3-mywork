@@ -7,7 +7,9 @@ from .forms import *
 from django.utils import timezone
 from .models import *
 from django.contrib.auth.decorators import *
-from authentication.forms import SignUpUserForm
+from authentication.forms import *
+def credits(request):
+    return render(request, 'todo/credits.html')
 def home(request):
         return render(request, 'todo/home.html', {'title':"My Work - The free todo web app"})
 @login_required
