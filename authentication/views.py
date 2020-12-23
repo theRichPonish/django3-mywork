@@ -55,9 +55,9 @@ def changepassword(request):
         user = authenticate(request, username=request.user, password=request.POST['current_password'])
         passwords_also_match = request.POST['new_password']==request.POST['confirm_new_password']
         if user is not None and passwords_also_match:
-            u = User.objects.get(username__exact=request.user)
-            u.set_password(request.POST['confirm_new_password'])
-            u.save()
+            pc_value = User.objects.get(username__exact=request.user)
+            pc_value.set_password(request.POST['confirm_new_password'])
+            pc_value.save()
             login(request, u)
             return redirect('currenttodos')
         elif user is None and passwords_also_match:
